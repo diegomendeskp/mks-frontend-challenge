@@ -7,7 +7,7 @@ import {
   Price,
   Descript,
 } from './styles';
-
+import Image from 'next/image';
 export interface CardProps {
   id: number;
   photo: string;
@@ -25,7 +25,7 @@ export default function Card({
   console.log(photo);
   return (
     <Cards>
-      <img src={photo} width="200" height="150" />
+      <Image src={photo} width="200" height="150" />
       <Text>
         <Title>{name}</Title>
         <Price>{price}</Price>
