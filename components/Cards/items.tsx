@@ -17,7 +17,7 @@ export const Products = () => {
   return (
     <>
       <CardContainer>
-        {products.map((product, key) => {
+        {products.map((product) => {
           return (
             <Card
               id={product?.id}
