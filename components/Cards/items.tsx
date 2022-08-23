@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Card from '.';
+import { Item } from '../../interface/Item';
 import { apiProducts } from '../../pages/api';
 import { CardContainer } from './styles';
 
@@ -18,7 +19,7 @@ export const Products = () => {
   return (
     <>
       <CardContainer>
-        {products.map((product: any, key) => {
+        {products.map((product: Item, key) => {
           return (
             <Card
               key={key}

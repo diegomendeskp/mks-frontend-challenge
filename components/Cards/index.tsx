@@ -1,3 +1,4 @@
+import { Item } from '../../interface/Item';
 import {
   Cards,
   StyleButton,
@@ -7,20 +8,13 @@ import {
   Descript,
 } from './styles';
 
-export interface CardProps {
-  id: number;
-  photo: string;
-  name: string;
-  description: string;
-  price: string;
-}
 export default function Card({
   id,
   photo,
   name,
   description,
   price,
-}: CardProps) {
+}: Item) {
   console.log(photo);
   return (
     <Cards key={id}>
