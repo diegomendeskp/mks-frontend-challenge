@@ -1,22 +1,24 @@
 import { Skeleton } from '@mui/material';
-import { useEffect, useState } from 'react';
 import Card from '.';
 import { Item } from '../../interface/Item';
-import { apiProducts } from '../../pages/api';
 import { CardContainer } from './styles';
+import { getProducts } from '../../store/productSlice';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { useAppDispatch } from '../../store/hooks';
 
 export const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    const data = await apiProducts.get(
-      '/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC'
-    );
-    setProducts(data?.data.products);
-  };
+  const dispatch = useAppDispatch();
+  const loading = useSelector(
+    (state: RootState) => state.products.loading
+  );
+  const products = useSelector(
+    (state: RootState) => state.products.products
+  );
+
   useEffect(() => {
-    setLoading(true);
-    getData().finally(() => setLoading(false));
+    dispatch(getProducts());
   }, []);
   return (
     <>
@@ -35,7 +37,7 @@ export const Products = () => {
                 />
               ))}
           {!loading &&
-            products.map((product: Item, key) => {
+            products.map((product: Item, key: number) => {
               return (
                 <Card
                   key={key}
