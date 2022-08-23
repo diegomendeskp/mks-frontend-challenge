@@ -13,16 +13,17 @@ export const Products = () => {
   };
   useEffect(() => {
     getData();
+    console.log(products);
   }, []);
   return (
     <>
       <CardContainer>
-        {products.map((product) => {
+        {products.map((product: any) => {
           return (
             <Card
               id={product?.id}
-              photo={product?.photo}
               name={product?.name}
+              photo={product?.photo}
               description={product?.description}
               price={product?.price}
             />
