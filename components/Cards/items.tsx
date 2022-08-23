@@ -18,9 +18,10 @@ export const Products = () => {
   return (
     <>
       <CardContainer>
-        {products.map((product: any) => {
+        {products.map((product: any, key) => {
           return (
             <Card
+              key={key}
               id={product?.id}
               name={product?.name}
               photo={product?.photo}
