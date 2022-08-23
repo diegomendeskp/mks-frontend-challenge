@@ -1,13 +1,12 @@
 import {
   Cards,
   StyleButton,
-  CardContainer,
   Title,
   Text,
   Price,
   Descript,
 } from './styles';
-import Image from 'next/image';
+
 export interface CardProps {
   id: number;
   photo: string;
@@ -24,8 +23,8 @@ export default function Card({
 }: CardProps) {
   console.log(photo);
   return (
-    <Cards>
-      <Image src={photo} width="200" height="150" />
+    <Cards key={id}>
+      <img src={photo} width="200" height="150" />
       <Text>
         <Title>{name}</Title>
         <Price>{price}</Price>
