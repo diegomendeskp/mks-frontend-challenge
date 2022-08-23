@@ -4,7 +4,7 @@ import { Item } from '../../interface/Item';
 import { CardContainer } from './styles';
 import { getProducts } from '../../store/productSlice';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useAppDispatch } from '../../store/hooks';
 
@@ -16,9 +16,7 @@ export const Products = () => {
   const products = useSelector(
     (state: RootState) => state.products.products
   );
-  const error = useSelector(
-    (state: RootState) => state.products.error
-  );
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
