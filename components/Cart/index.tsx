@@ -18,7 +18,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux';
 import { CloseMenu } from '../../store/cartMenuSlice';
 import type { RootState } from '../../store/store';
-import { Button, Grid, IconButton, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { decreaseCart, subTotals } from '../../store/cartSlice';
 function Cart() {
   const menu = useSelector(

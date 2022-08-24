@@ -1,7 +1,6 @@
 import { Skeleton } from '@mui/material';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Card from '.';
-import { Item } from '../../interface/Item';
 import { CardContainer, CardItem, StyleButton } from './styles';
 import { getProducts } from '../../store/productSlice';
 import { useEffect } from 'react';
