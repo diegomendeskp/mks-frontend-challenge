@@ -63,7 +63,12 @@ function Cart() {
           </div>
         ) : (
           <>
-            <Grid width="90%">
+            <Grid
+              className="itemList"
+              overflow="auto"
+              height="70%"
+              width="90%"
+            >
               {cart.cartItems?.map((cartItem) => (
                 <Grid
                   display="flex"

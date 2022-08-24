@@ -15,6 +15,10 @@ export const Container = styled(Grid)`
   box-shadow: 1px 1px 5px;
   position: fixed;
   backdrop-filter: blur(4px);
+  .itemList::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (max-width: 400px) {
     width: 85%;
   }
