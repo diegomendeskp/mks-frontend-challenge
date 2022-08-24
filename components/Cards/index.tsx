@@ -1,15 +1,5 @@
 import { Item } from '../../interface/Item';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
-import {
-  Cards,
-  StyleButton,
-  Title,
-  Text,
-  Price,
-  Descript,
-} from './styles';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/cartSlice';
+import { Cards, Title, Text, Price, Descript } from './styles';
 
 export default function Card({
   key,

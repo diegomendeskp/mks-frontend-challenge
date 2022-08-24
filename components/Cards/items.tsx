@@ -1,4 +1,4 @@
-import { Grid, Skeleton } from '@mui/material';
+import { Skeleton } from '@mui/material';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Card from '.';
 import { Item } from '../../interface/Item';
@@ -41,16 +41,16 @@ export const Products = () => {
                 />
               ))}
           {!loading &&
-            products.map((product: Item) => {
+            products.map((product: Item, key: number) => {
               return (
                 <CardItem>
                   <Card
-                    key={product?.id}
+                    key={key}
+                    id={product?.id}
                     name={product?.name}
                     photo={product?.photo}
                     description={product?.description}
                     price={product?.price}
-                    id={0}
                   />
                   <StyleButton
                     onClick={() => {
