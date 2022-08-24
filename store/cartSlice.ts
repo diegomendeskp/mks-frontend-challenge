@@ -3,52 +3,81 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { AppDispatch } from './store'
 import { Item } from '../interface/Item'
 import { productService } from '../service';
-
-// Define a type for the slice state
+export interface CartItem extends Item{
+  cartQuantity: number;
+}
 interface CartState {
-  loading: boolean;
-  products: Item[];
-  error: boolean;
-  value: number
-
+  cartItems: CartItem[];
+  cartTotalQuantity: number;
+  cartTotalAmont: number;
 }
 
-// Define the initial state using that type
-const initialState: CartState = {
-  loading: true,
-  products: [],
-  error: false,
-  value: 1,
-
+const initialState:CartState ={
+  cartItems: [],
+  cartTotalQuantity: 0,
+  cartTotalAmont: 0,
 }
+
+
 
 export const cartSlice = createSlice({
   name: 'cart',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    increment: (state) => {
-        state.value += 1
+   
+      addToCart:(state, action: PayloadAction<CartItem>) => {
+
+        const itemIndex = state.cartItems.findIndex(item => item.id ===action.payload.id);
+        if(itemIndex >= 0){
+          state.cartItems[itemIndex].cartQuantity += 1
+         
+        }else{const tempProduct = {...action.payload, cartQuantity:1}
+        state.cartItems.push(tempProduct);}
+        
+        localStorage.setItem("cartItems",JSON.stringify(state.cartItems));
       },
-      decrement: (state) => {
-        state.value -= 1
+      subTotals:(state) => {
+        let {total, quantity} = 
+        state.cartItems.reduce((cartTotal, cartItem)=>{
+          const {price, cartQuantity} = cartItem;
+          const itemTotal = price * cartQuantity;
+
+          cartTotal.total += itemTotal
+          cartTotal.quantity += cartQuantity
+
+          return cartTotal;
+        },{
+          total: 0,
+          quantity: 0,
+        })
+        state.cartTotalQuantity = quantity;
+        state.cartTotalAmont = total;
       },
-      // Use the PayloadAction type to declare the contents of `action.payload`
-      incrementByAmount: (state, action: PayloadAction<number>) => {
-        state.value += action.payload
+      decreaseCart:(state, action: PayloadAction<CartItem>) => {
+        const itemIndex = state.cartItems.findIndex((cartItem) => cartItem.id === action.payload.id)
+
+        if(state.cartItems[itemIndex].cartQuantity > 1){
+          state.cartItems[itemIndex].cartQuantity -= 1
+
+          
+
+        }else if(state.cartItems[itemIndex].cartQuantity === 1){
+          const nextCartItems = state.cartItems.filter(
+          (cartItem)=> cartItem.id !== action.payload.id
+          );
+          state.cartItems = nextCartItems;
+          
+          
+        }
+        localStorage.setItem("cartItem",JSON.stringify(state.cartItems));
+
       },
+      
   },
 })
 
-export const { increment, decrement, incrementByAmount} = cartSlice.actions
+export const { addToCart, subTotals, decreaseCart } = cartSlice.actions
 
-// export const getProducts = ()=> async (dispatch: AppDispatch)=> {
-//     dispatch(loading())
-//     const data = await productService.get(
-//       '/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC'
-//     );
-//     dispatch(success(data?.data.products))
+ 
 
-  
-// }
 export default cartSlice.reducer

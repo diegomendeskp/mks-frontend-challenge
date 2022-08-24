@@ -12,6 +12,7 @@ export const Container = styled(Grid)`
   z-index: 1;
   @media (max-width: 400px) {
     height: 60px;
+    gap: 30px;
   }
 `;
 export const Text = styled(Typography)`
@@ -22,6 +23,7 @@ export const Text = styled(Typography)`
   color: #ffffff;
   @media (max-width: 400px) {
     font-size: 35px;
+    margin-left: 20px;
   }
 `;
 export const Sub = styled(Typography)`
@@ -36,6 +38,8 @@ export const Sub = styled(Typography)`
 `;
 
 export const Btn = styled(Button)`
+  display: flex;
+  gap: 7px;
   background: #ffffff;
   width: 90px;
   height: 40px;
@@ -52,4 +56,8 @@ export const Btn = styled(Button)`
   :hover {
     background: #fffa;
   }
+`;
+export const CartLength = styled(Grid)`
+  font-weight: 700;
+  font-size: 18px;
 `;

@@ -1,14 +1,13 @@
-import { Typography } from '@mui/material';
 import React from 'react';
-import { Container } from './styles';
+import { Container, Text } from './styles';
 
 function Footer() {
   return (
     <>
       <Container>
-        <Typography variant="body1">
+        <Text variant="body1">
           MKS Sistemas © Todos os direitos reservados
-        </Typography>
+        </Text>
       </Container>
     </>
   );

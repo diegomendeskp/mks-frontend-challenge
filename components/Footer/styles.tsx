@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Container = styled(Grid)`
@@ -12,9 +12,13 @@ export const Container = styled(Grid)`
   bottom: 0;
   z-index: 1;
   @media (max-width: 500px) {
-    font-size: 17px;
     background: #e5e5e5;
     position: fixed;
     bottom: 0%;
+  }
+`;
+export const Text = styled(Typography)`
+  @media (max-width: 500px) {
+    font-size: 10px;
   }
 `;

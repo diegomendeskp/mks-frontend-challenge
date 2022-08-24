@@ -1,19 +1,22 @@
 import { Skeleton } from '@mui/material';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Card from '.';
-import { Item } from '../../interface/Item';
-import { CardContainer } from './styles';
+import { CardContainer, CardItem, StyleButton } from './styles';
 import { getProducts } from '../../store/productSlice';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { addToCart, CartItem } from '../../store/cartSlice';
 
 export const Products = () => {
   const dispatch = useAppDispatch();
-  const loading = useSelector(
+  const hadleAddToCard = (product: CartItem) => {
+    dispatch(addToCart(product));
+  };
+  const loading = useAppSelector(
     (state: RootState) => state.products.loading
   );
-  const products = useSelector(
+  const products = useAppSelector(
     (state: RootState) => state.products.products
   );
 
@@ -37,16 +40,26 @@ export const Products = () => {
                 />
               ))}
           {!loading &&
-            products.map((product: Item, key: number) => {
+            products.map((product) => {
               return (
-                <Card
-                  key={key}
-                  id={product?.id}
-                  name={product?.name}
-                  photo={product?.photo}
-                  description={product?.description}
-                  price={product?.price}
-                />
+                <CardItem key={0}>
+                  <Card
+                    key={product?.id}
+                    name={product?.name}
+                    photo={product?.photo}
+                    description={product?.description}
+                    price={product?.price}
+                    id={0}
+                  />
+                  <StyleButton
+                    onClick={() => {
+                      hadleAddToCard(product as CartItem);
+                    }}
+                  >
+                    <LocalMallIcon fontSize="small" />
+                    Comprar
+                  </StyleButton>
+                </CardItem>
               );
             })}
         </>
