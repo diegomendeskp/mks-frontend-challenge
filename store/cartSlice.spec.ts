@@ -53,8 +53,26 @@ describe('testing cartSliceReducer', ()=>{
             const state = store.getState().cart
              expect(state.cartTotalQuantity).toEqual(1)
              expect(state.cartItems[0].description).toEqual('itemDescription')
+           
         })
     })
 
-    
+    describe('testing removeFromCart', ()=>{
+        it('should add a item to the cart state', ()=>{
+         
+            store.dispatch(removeFromCart({
+                id: 1,
+                photo: 'photo',
+                name: 'itemobject',
+                description: 'itemDescription',
+                price: 25,
+                key: 7,
+                cartQuantity: 1,
+            }))
+            
+            const state = store.getState().cart
+             expect(state.cartItems).toEqual([])
+
+        })
+    })
 })
