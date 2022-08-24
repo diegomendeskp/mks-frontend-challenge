@@ -58,25 +58,29 @@ export const cartSlice = createSlice({
 
         if(state.cartItems[itemIndex].cartQuantity > 1){
           state.cartItems[itemIndex].cartQuantity -= 1
-
           
-
         }else if(state.cartItems[itemIndex].cartQuantity === 1){
           const nextCartItems = state.cartItems.filter(
           (cartItem)=> cartItem.id !== action.payload.id
           );
           state.cartItems = nextCartItems;
-          
-          
         }
         localStorage.setItem("cartItem",JSON.stringify(state.cartItems));
+      },
+      removeFromCart:(state, action: PayloadAction<CartItem>) => {
+        const nextCartItems = state.cartItems.filter(
+          (cartItem)=> cartItem.id !== action.payload.id
+          );
+
+          state.cartItems = nextCartItems;
+          
+          localStorage.setItem("cartItem",JSON.stringify(state.cartItems));
 
       },
-      
   },
 })
 
-export const { addToCart, subTotals, decreaseCart } = cartSlice.actions
+export const { addToCart, subTotals, decreaseCart ,removeFromCart} = cartSlice.actions
 
  
 

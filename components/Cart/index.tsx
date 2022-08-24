@@ -13,6 +13,7 @@ import {
   DeletBtn,
   Count,
   NameItem,
+  PriceItem,
 } from './styles';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,8 +21,10 @@ import { CloseMenu } from '../../store/cartMenuSlice';
 import type { RootState } from '../../store/store';
 import { Grid, Typography } from '@mui/material';
 import {
+  addToCart,
   CartItem as Items,
   decreaseCart,
+  removeFromCart,
   subTotals,
 } from '../../store/cartSlice';
 function Cart() {
@@ -32,6 +35,12 @@ function Cart() {
   const dispatch = useDispatch();
   const handleDecreaseCart = (Items: Items) => {
     dispatch(decreaseCart(Items));
+  };
+  const handleincreaseCart = (Items: Items) => {
+    dispatch(addToCart(Items));
+  };
+  const handleRemoveCart = (Items: Items) => {
+    dispatch(removeFromCart(Items));
   };
   useEffect(() => {
     dispatch(subTotals());
@@ -69,18 +78,26 @@ function Cart() {
                     </NameItem>
                     <Count>
                       <button
+                        className="count-btn"
                         onClick={() => handleDecreaseCart(cartItem)}
                       >
                         -
                       </button>
                       {cartItem.cartQuantity}
-                      <button>+</button>
+                      <button
+                        className="count-btn"
+                        onClick={() => handleincreaseCart(cartItem)}
+                      >
+                        +
+                      </button>
                     </Count>
-                    <div>
+                    <PriceItem>
                       ${cartItem.price * cartItem.cartQuantity}
-                    </div>
+                    </PriceItem>
                     <div>
-                      <DeletBtn>
+                      <DeletBtn
+                        onClick={() => handleRemoveCart(cartItem)}
+                      >
                         <CloseIcon fontSize="small" />
                       </DeletBtn>
                     </div>

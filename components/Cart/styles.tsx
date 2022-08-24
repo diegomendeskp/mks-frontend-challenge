@@ -16,7 +16,7 @@ export const Container = styled(Grid)`
   position: fixed;
   backdrop-filter: blur(4px);
   @media (max-width: 400px) {
-    width: 90%;
+    width: 85%;
   }
 `;
 export const CartItem = styled(Grid)`
@@ -45,13 +45,31 @@ export const ItemCard = styled(Grid)`
   background: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   width: 90%;
   height: 90px;
-  gap: 5px;
   border-radius: 8px;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.24);
   position: relative;
+  img {
+    margin-left: 20px;
+  }
+  @media (max-width: 400px) {
+    width: 80%;
+    height: 170px;
+    margin-left: 28px;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    img {
+      width: 80px;
+      top: 0px;
+      right: 75px;
+      position: absolute;
+    }
+  }
 `;
 
 export const Title = styled(Typography)`
@@ -140,12 +158,75 @@ export const DeletBtn = styled(IconButton)`
     opacity: 0.8;
     background: #000;
   }
+  @media (max-width: 400px) {
+    background: none;
+    right: 10px;
+    top: 40px;
+    color: black;
+  }
 `;
-export const NameItem = styled(Grid)``;
+export const NameItem = styled(Grid)`
+  width: 140px;
+  position: absolute;
+  left: 75px;
+  @media (max-width: 400px) {
+    position: none;
+    bottom: 50px;
+    width: 100%;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+  }
+`;
+export const PriceItem = styled(Grid)`
+  position: absolute;
+  right: 30px;
+  font-weight: 700;
+
+  @media (max-width: 400px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 10px;
+    background: #373737;
+    color: #fff;
+    width: 80px;
+    height: 32px;
+    border-radius: 5px;
+  }
+`;
 
 export const Count = styled(Grid)`
   display: flex;
+  width: 50px;
   gap: 5px;
+  align-items: center;
   position: absolute;
-  right: 100px;
+  justify-content: center;
+  right: 110px;
+  border: 1px solid black;
+  border-radius: 5px;
+  .count-btn {
+    border: none;
+    cursor: pointer;
+    background: none;
+    width: 10px;
+  }
+  @media (max-width: 400px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    bottom: 10px;
+    color: #fff;
+    width: 70px;
+    height: 32px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    left: 30px;
+  }
 `;
