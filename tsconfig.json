@@ -20,6 +20,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js", "store/cartSlice.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js", "store/cartSlice.js", "components/Cart/index.test.tsx"],
   "exclude": ["node_modules"]
 }
