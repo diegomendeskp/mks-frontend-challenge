@@ -73,8 +73,7 @@ export const Descript = styled(Typography)`
   justify-content: flex-start;
   align-items: flex-start;
   font-weight: 300;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 20px;
   color: #2c2c2c;
 `;
 

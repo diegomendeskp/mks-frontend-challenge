@@ -19,7 +19,7 @@ export const Container = styled(Grid)`
     display: none;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     width: 85%;
   }
 `;
@@ -40,7 +40,7 @@ export const Div = styled(Grid)`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     margin-top: 30px;
   }
 `;
@@ -58,7 +58,7 @@ export const ItemCard = styled(Grid)`
   img {
     margin-left: 20px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     width: 80%;
     height: 170px;
     margin-left: 28px;
@@ -162,7 +162,7 @@ export const DeletBtn = styled(IconButton)`
     opacity: 0.8;
     background: #000;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     background: none;
     right: 10px;
     top: 40px;
@@ -173,7 +173,7 @@ export const NameItem = styled(Grid)`
   width: 140px;
   position: absolute;
   left: 75px;
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     position: none;
     bottom: 50px;
     width: 100%;
@@ -189,7 +189,7 @@ export const PriceItem = styled(Grid)`
   right: 30px;
   font-weight: 700;
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     position: absolute;
     display: flex;
     align-items: center;
@@ -219,7 +219,7 @@ export const Count = styled(Grid)`
     background: none;
     width: 10px;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     position: absolute;
     display: flex;
     align-items: center;
