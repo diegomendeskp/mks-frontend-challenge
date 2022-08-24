@@ -7,11 +7,11 @@ import { getProducts } from '../../store/productSlice';
 import { useEffect } from 'react';
 import { RootState } from '../../store/store';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { addToCart } from '../../store/cartSlice';
+import { addToCart, CartItem } from '../../store/cartSlice';
 
 export const Products = () => {
   const dispatch = useAppDispatch();
-  const hadleAddToCard = (product) => {
+  const hadleAddToCard = (product: CartItem) => {
     dispatch(addToCart(product));
   };
   const loading = useAppSelector(
@@ -41,20 +41,20 @@ export const Products = () => {
                 />
               ))}
           {!loading &&
-            products.map((product: Item, key: number) => {
+            products.map((product) => {
               return (
-                <CardItem>
+                <CardItem key={0}>
                   <Card
-                    key={key}
-                    id={product?.id}
+                    key={product?.id}
                     name={product?.name}
                     photo={product?.photo}
                     description={product?.description}
                     price={product?.price}
+                    id={0}
                   />
                   <StyleButton
                     onClick={() => {
-                      hadleAddToCard(product);
+                      hadleAddToCard(product as CartItem);
                     }}
                   >
                     <LocalMallIcon fontSize="small" />

@@ -10,11 +10,15 @@ import {
   Price,
   CartItem,
   ItemCard,
+  DeletBtn,
+  Count,
+  NameItem,
 } from './styles';
+import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux';
 import { CloseMenu } from '../../store/cartMenuSlice';
 import type { RootState } from '../../store/store';
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, IconButton, Typography } from '@mui/material';
 import { decreaseCart, subTotals } from '../../store/cartSlice';
 function Cart() {
   const menu = useSelector(
@@ -34,7 +38,9 @@ function Cart() {
         <Div>
           <Title>Carrinho de Compras</Title>
 
-          <Btn onClick={() => dispatch(CloseMenu())}>x</Btn>
+          <Btn onClick={() => dispatch(CloseMenu())}>
+            <CloseIcon />
+          </Btn>
         </Div>
         {cart.cartItems.length === 0 ? (
           <div>
@@ -48,29 +54,31 @@ function Cart() {
               {cart.cartItems?.map((cartItem) => (
                 <Grid
                   display="flex"
-                  mt={1}
+                  mt={2}
                   className="cart-item"
                   key={cartItem.id}
                 >
                   <ItemCard>
                     <img width={50} src={cartItem.photo} />
-                    <div>
+                    <NameItem>
                       <h3>{cartItem.name}</h3>
-                      <div className="quantidade">
-                        <button
-                          onClick={() => handleDecreaseCart(cartItem)}
-                        >
-                          -
-                        </button>
-                        {cartItem.cartQuantity}
-                        <button>+</button>
-                      </div>
-                    </div>
+                    </NameItem>
+                    <Count>
+                      <button
+                        onClick={() => handleDecreaseCart(cartItem)}
+                      >
+                        -
+                      </button>
+                      {cartItem.cartQuantity}
+                      <button>+</button>
+                    </Count>
                     <div>
                       ${cartItem.price * cartItem.cartQuantity}
                     </div>
                     <div>
-                      <button>x</button>
+                      <DeletBtn aria-label="delete">
+                        <CloseIcon fontSize="small" />
+                      </DeletBtn>
                     </div>
                   </ItemCard>
                 </Grid>

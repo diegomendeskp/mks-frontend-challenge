@@ -3,8 +3,11 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { AppDispatch } from './store'
 import { Item } from '../interface/Item'
 import { productService } from '../service';
+export interface CartItem extends Item{
+  cartQuantity: number;
+}
 interface CartState {
-  cartItems: [];
+  cartItems: CartItem[];
   cartTotalQuantity: number;
   cartTotalAmont: number;
 }
@@ -22,7 +25,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
    
-      addToCart:(state, action: PayloadAction<number>) => {
+      addToCart:(state, action: PayloadAction<CartItem>) => {
 
         const itemIndex = state.cartItems.findIndex(item => item.id ===action.payload.id);
         if(itemIndex >= 0){
@@ -33,7 +36,7 @@ export const cartSlice = createSlice({
         
         localStorage.setItem("cartItems",JSON.stringify(state.cartItems));
       },
-      subTotals:(state, action: PayloadAction<number>) => {
+      subTotals:(state, action: PayloadAction<CartItem>) => {
         let {total, quantity} = 
         state.cartItems.reduce((cartTotal, cartItem)=>{
           const {price, cartQuantity} = cartItem;
@@ -50,15 +53,15 @@ export const cartSlice = createSlice({
         state.cartTotalQuantity = quantity;
         state.cartTotalAmont = total;
       },
-      decreaseCart:(state, action: PayloadAction<number>) => {
-        const itemIndex = state.cartItems.findIndex((cartItem) => cartItem.id === action.paylod.id)
+      decreaseCart:(state, action: PayloadAction<CartItem>) => {
+        const itemIndex = state.cartItems.findIndex((cartItem) => cartItem.id === action.payload.id)
 
         if(state.cartItems[itemIndex].cartQuantity > 1){
           state.cartItems[itemIndex].cartQuantity -= 1
 
           
 
-        }else if(state.cartItems[indexIndex].cartQuantity === 1){
+        }else if(state.cartItems[itemIndex].cartQuantity === 1){
           const nextCartItems = state.cartItems.filter(
           (cartItem)=> cartItem.id !== action.payload.id
           );

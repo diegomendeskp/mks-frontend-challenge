@@ -1,4 +1,4 @@
-import { Typography, Grid, Button } from '@mui/material';
+import { Typography, Grid, Button, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 export const Container = styled(Grid)`
   right: 0px;
@@ -26,7 +26,7 @@ export const CartItem = styled(Grid)`
   flex-direction: column;
   position: relative;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const Div = styled(Grid)`
@@ -45,12 +45,13 @@ export const ItemCard = styled(Grid)`
   background: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 90%;
-  height: 70px;
+  height: 90px;
   gap: 5px;
   border-radius: 8px;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.24);
+  position: relative;
 `;
 
 export const Title = styled(Typography)`
@@ -61,7 +62,7 @@ export const Title = styled(Typography)`
   line-height: 30px;
   width: 160px;
 `;
-export const Btn = styled(Grid)`
+export const Btn = styled(IconButton)`
   border: none;
   margin-top: -30px;
   border-radius: 50%;
@@ -77,7 +78,8 @@ export const Btn = styled(Grid)`
   cursor: pointer;
   color: #ffffff;
   :hover {
-    opacity: 0.9;
+    opacity: 0.8;
+    background: #000;
   }
 `;
 
@@ -115,4 +117,35 @@ export const PurchaseBtn = styled(Button)`
   :hover {
     background: #000000da;
   }
+`;
+export const DeletBtn = styled(IconButton)`
+  position: absolute;
+  right: -7px;
+  top: 19px;
+  border: none;
+  margin-top: -30px;
+  border-radius: 50%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 15px;
+  cursor: pointer;
+  color: #ffffff;
+  :hover {
+    opacity: 0.8;
+    background: #000;
+  }
+`;
+export const NameItem = styled(Grid)``;
+
+export const Count = styled(Grid)`
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  right: 100px;
 `;
