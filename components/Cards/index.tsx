@@ -1,4 +1,5 @@
 import { Item } from '../../interface/Item';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import {
   Cards,
   StyleButton,
@@ -7,24 +8,24 @@ import {
   Price,
   Descript,
 } from './styles';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cartSlice';
 
 export default function Card({
-  id,
+  key,
   photo,
   name,
   description,
   price,
 }: Item) {
-  console.log(photo);
   return (
-    <Cards key={id}>
+    <Cards key={key}>
       <img src={photo} width="200" height="150" />
       <Text>
         <Title>{name}</Title>
         <Price>{price}</Price>
         <Descript>{description}</Descript>
       </Text>
-      <StyleButton>Comprar</StyleButton>
     </Cards>
   );
 }
