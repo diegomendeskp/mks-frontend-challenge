@@ -27,6 +27,7 @@ import {
   removeFromCart,
   subTotals,
 } from '../../store/cartSlice';
+
 function Cart() {
   const menu = useSelector(
     (state: RootState) => state.cartMenu.state

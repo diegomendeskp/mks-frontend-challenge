@@ -55,7 +55,6 @@ export const cartSlice = createSlice({
       },
       decreaseCart:(state, action: PayloadAction<CartItem>) => {
         const itemIndex = state.cartItems.findIndex((cartItem) => cartItem.id === action.payload.id)
-
         if(state.cartItems[itemIndex].cartQuantity > 1){
           state.cartItems[itemIndex].cartQuantity -= 1
           
