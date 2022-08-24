@@ -19,15 +19,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CloseMenu } from '../../store/cartMenuSlice';
 import type { RootState } from '../../store/store';
 import { Grid, Typography } from '@mui/material';
-import { decreaseCart, subTotals } from '../../store/cartSlice';
+import {
+  CartItem as Items,
+  decreaseCart,
+  subTotals,
+} from '../../store/cartSlice';
 function Cart() {
   const menu = useSelector(
     (state: RootState) => state.cartMenu.state
   );
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  const handleDecreaseCart = (cartItem) => {
-    dispatch(decreaseCart(cartItem));
+  const handleDecreaseCart = (Items: Items) => {
+    dispatch(decreaseCart(Items));
   };
   useEffect(() => {
     dispatch(subTotals());
