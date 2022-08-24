@@ -76,7 +76,7 @@ function Cart() {
                       ${cartItem.price * cartItem.cartQuantity}
                     </div>
                     <div>
-                      <DeletBtn aria-label="delete">
+                      <DeletBtn>
                         <CloseIcon fontSize="small" />
                       </DeletBtn>
                     </div>
